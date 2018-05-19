@@ -16,7 +16,7 @@ if (/Android/.test(navigator.userAgent)) {
 }
 
 let webUrl="https://monya-wallet.github.io/wallet?url="+encodeURIComponent(url)
-if(queries.address="NEM_APOSTILLE_BITCONIN"){
+if("NEM_APOSTILLE_BITCONIN"===queries.address){
    webUrl="https://missmonacoin.github.io/bitconin-nem-wallet?url="+encodeURIComponent(url)
 }
 function $(id){
@@ -24,8 +24,14 @@ function $(id){
 }
 
 $("openMonyaWeb").href=webUrl
+$("notOpen").href=monyaAppUrl
 $("openMonya").href=monyaAppUrl
 $("openWallet").href=url
+
+$("openMonya").addEventListener("click",function(e){
+  $("openMonya").style.display="none"
+  $("notOpen").style.display="inline-block"
+})
 
 if (queries.address) {
   $("addressInput").value=queries.address
@@ -38,13 +44,16 @@ if (queries.message) {
 if (queries["req-opreturn"]) {
   $("opreturn").innerText=decodeURIComponent(queries["req-opreturn"])
 }
-
+if(queries.address){
 qrcode.toDataURL(url,{
   errorCorrectionLevel: 'M',
   type: 'image/png'
 },(err,url)=>{
   $("qrcode").src=url
 })
+
+}
+
 
 
 

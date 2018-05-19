@@ -20,6 +20,7 @@ header {
   box-shadow: 0 -1px 12px 0 rgba(0,0,0,.5)
 }
 
+
 #title {
   font-size: 1.5em;
   color: #7c5702
@@ -50,8 +51,7 @@ header {
 
 #qrcode {
   display: inline-block;
-  width: 300px;
-  height: 300px;
+  width: 80%;
   margin: 10px
 }
 
